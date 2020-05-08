@@ -39,6 +39,14 @@ export class StoreComponent {
       .slice(pageIndex, pageIndex + this.productsPerPage)
   }
 
+  get descriptions(): Product[]{
+    let pageIndex2 = (this.selectedPage - 1) * this.productsPerPage
+    return this.repository
+      .getProducts(this.selectedCategory)
+      .filter((product) => this.matchedEntry(product.description))
+      .slice(pageIndex2, pageIndex2 + this.productsPerPage)
+  }
+
   get categories(): string[] {
     return this.repository.getCategories()
   }
