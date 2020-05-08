@@ -19,6 +19,16 @@ export class StoreComponent {
 
   matchedEntry(name: String) {
     const trimmed = this.searchEntry.trim()
+    let matchedEntry = false
+
+    if(trimmed === ''){
+      matchedEntry = true
+    }
+    else{
+      matchedEntry=name.toLowerCase().indexOf(trimmed.toLowerCase()) !== -1
+    }
+
+    return matchedEntry
   }
 
   get products(): Product[] {
